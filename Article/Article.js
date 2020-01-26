@@ -85,6 +85,13 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+  {
+    title: "Newly Updated Article",
+    date: "Jan 26th, 2020",
+    firstParagraph: "Lambda School! Lambda School! Lambda School!",
+    secondParagraph: "Lambda School! Lambda School! Lambda School!",
+    thirdParagraph: "Lambda School! Lambda School! Lambda School!"
   }
 ];
 
@@ -133,6 +140,19 @@ const createArticle = (title, date, firstParagraph, secondParagraph, thirdParagr
   article.classList.add("article");
   articleDate.classList.add("date");
   expandButton.classList.add("expandButton");
+
+  // add content
+  articleTitle.textContent = title;
+  articleDate.textContent = date;
+  articleContent1.textContent = firstParagraph;
+  articleContent2.textContent = secondParagraph;
+  articleContent3.textContent = thirdParagraph;
+  expandButton.textContent = "Learn More";
+
+  // functionality
+  expandButton.addEventListener("click", () => {
+    article.classList.toggle("article-open");
+  })
 
   return article;
 }
