@@ -45,6 +45,7 @@ const createMenu = () => {
   // add content
   menuItems.forEach(item => {
     const listItem = document.createElement("li");
+    listItem.textContent = item;
     menuList.appendChild(listItem);
   });
 
@@ -57,4 +58,5 @@ const createMenu = () => {
   return menu;
 }
 
-document.body.appendChild(createMenu());
+const header = document.querySelector(".header");
+header.appendChild(createMenu());
