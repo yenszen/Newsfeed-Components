@@ -85,6 +85,13 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+  {
+    title: "Newly Updated Article",
+    date: "Jan 26th, 2020",
+    firstParagraph: "Lambda School! Lambda School! Lambda School!",
+    secondParagraph: "Lambda School! Lambda School! Lambda School!",
+    thirdParagraph: "Lambda School! Lambda School! Lambda School!"
   }
 ];
 
@@ -112,3 +119,46 @@ const data = [
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 
 */
+
+const createArticle = (title, date, firstParagraph, secondParagraph, thirdParagraph) => {
+  const article = document.createElement("div");
+  const articleTitle = document.createElement("h2");
+  const articleDate = document.createElement("p");
+  const articleContent1 = document.createElement("p");
+  const articleContent2 = document.createElement("p");
+  const articleContent3 = document.createElement("p");
+  const expandButton = document.createElement("span");
+
+  article.appendChild(articleTitle);
+  article.appendChild(articleDate);
+  article.appendChild(articleContent1);
+  article.appendChild(articleContent2);
+  article.appendChild(articleContent3);
+  article.appendChild(expandButton);
+
+  // set class names
+  article.classList.add("article");
+  articleDate.classList.add("date");
+  expandButton.classList.add("expandButton");
+
+  // add content
+  articleTitle.textContent = title;
+  articleDate.textContent = date;
+  articleContent1.textContent = firstParagraph;
+  articleContent2.textContent = secondParagraph;
+  articleContent3.textContent = thirdParagraph;
+  expandButton.textContent = "Learn More";
+
+  // functionality
+  expandButton.addEventListener("click", () => {
+    article.classList.toggle("article-open");
+  })
+
+  return article;
+}
+
+const parentComponent = document.querySelector(".articles");
+data.forEach(item => {
+  const newArticle = createArticle(item.title, item.date, item.firstParagraph, item.secondParagraph, item.thirdParagraph);
+  parentComponent.appendChild(newArticle);
+})
